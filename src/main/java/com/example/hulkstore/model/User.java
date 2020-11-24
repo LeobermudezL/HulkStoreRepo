@@ -23,9 +23,9 @@ public class User {
     private String email;
     @NotNull(message = "Password cannot be null")
     @Size(min = 6, max = 30)
-    private int password;
+    private String password;
 
-    public User(Long id, @NotBlank(message = "Name is required!") String name, @NotBlank(message = "lastName is required!") String lastName, @NotBlank(message = "Email is required!") String email, @NotNull(message = "Password cannot be null") @Size(min = 6, max = 30) int password) {
+    public User(Long id, @NotBlank(message = "Name is required!") String name, @NotBlank(message = "lastName is required!") String lastName, @NotBlank(message = "Email is required!") String email, @NotNull(message = "Password cannot be null") @Size(min = 6, max = 30) String password) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -65,11 +65,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
     @Override

@@ -4,6 +4,7 @@ import com.example.hulkstore.exception.ResourceNotFoundException;
 import com.example.hulkstore.model.User;
 import com.example.hulkstore.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +18,11 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UsersRepository usersRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Override
     public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return usersRepository.save(user);
     }
 
